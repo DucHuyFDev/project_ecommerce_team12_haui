@@ -73,14 +73,18 @@ VPPShop là dự án website thương mại điện tử chuyên cung cấp các
    ```
 6. **Tạo tài khoản Google Cloud Platform và tạo key API cho Google Cloud Platform** 
 - Tạo 1 file config.py trong thư mục chatbot_api với với your-key là key bạn lấy được từ Google AI Studio https://aistudio.google.com/
-    GOOGLE_AI_API_KEY = "<your-key>" 
+    ```bash
+    GOOGLE_AI_API_KEY = "<your-key>"
+    ```
 
 - Đăng ký merchant cho môi trường test VNPay tại website: https://sandbox.vnpayment.vn/devreg, sau đó điền các thông tin sau vào file myweb/setting.py
+    ```bash
     VNPAY_RETURN_URL = 'http://localhost:8000/vnpay/payment_return'  # get from config
     VNPAY_PAYMENT_URL = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'  # get from config
     VNPAY_API_URL = 'https://sandbox.vnpayment.vn/merchant_webapi/api/transaction'
     VNPAY_TMN_CODE = 'xxxxxxxx'  # Website ID in VNPAY System, get from config
     VNPAY_HASH_SECRET_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  # Secret key for create checksum,get from config
+    ```
 
 6. **Chạy máy chủ phát triển**:
    ```bash

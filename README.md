@@ -34,8 +34,6 @@ VPPShop là dự án website thương mại điện tử chuyên cung cấp các
   - Postman (cho API Testing)
 
 ## 🛠 Cài đặt
-
-
 1. **Clone repository**:
    ```bash
    git clone https://github.com/DucHuyFDev/project_ecommerce_team12_haui.git
@@ -84,14 +82,14 @@ VPPShop là dự án website thương mại điện tử chuyên cung cấp các
     ```
 
 6. **Chạy máy chủ FastAPI**:
-   ```bash
-   uvicorn main:app --reload --port 8001 
-   ```
+    ```bash
+    uvicorn main:app --reload --port 8001 
+    ```
 
 7.  **Chạy máy chủ Django**:
-   ```bash
-   python manage.py runserver
-   ```
+    ```bash
+    python manage.py runserver
+    ```
    Duy trì cả 2 máy chủ, không được tắt FastAPI đi
    
 8. **Truy cập ứng dụng**:

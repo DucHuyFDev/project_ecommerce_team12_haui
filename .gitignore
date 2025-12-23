@@ -1,0 +1,23 @@
+# Môi trường ảo
+venv/
+env/
+*.env
+
+# Dependencies
+*.egg-info/
+
+# Django
+db.sqlite3
+staticfiles/
+#media/
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE config
+.idea/
+.vscode/
+
+chatbot_api/__pycache__/
+chatbot_api/config.py

@@ -1,0 +1,85 @@
+{% extends "profile/base_profile.html" %}
+{% load static %}
+{% load humanize %}
+{% load price_filters %}
+
+{% block profile_content %}
+<div class="card shadow-sm rounded-3 border-0">
+    <div class="card-header bg-white border-bottom-0 pt-4 px-4">
+        <h5 class="fw-bold text-uppercase text-primary">Lịch sử thanh toán VNPay</h5>
+    </div>
+    
+    <div class="card-body p-4">
+        {% if payments %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr class="bg-light fw-bold text-uppercase">
+                            <th scope="col" class="py-3">Mã giao dịch</th>
+                            <th scope="col" class="py-3">Mã đơn hàng</th>
+                            <th scope="col" class="py-3">Số tiền</th>
+                            <th scope="col" class="py-3">Nội dung</th>
+                            <th scope="col" class="py-3">Trạng thái</th>
+                            <th scope="col" class="text-center py-3">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in payments %}
+                        <tr>
+                            <td class="fw-bold text-primary py-3">
+                                {{ payment.vnp_TransactionNo|default:"-" }}
+                            </td>
+                            <td class="py-3">
+                                {% if payment.don_hang %}
+                                    <a href="{% url 'web:order_detail' payment.order_id %}" class="text-decoration-none">
+                                        #{{ payment.order_id }}
+                                    </a>
+                                {% else %}
+                                    #{{ payment.order_id }}
+                                {% endif %}
+                            </td>
+                            <td class="fw-bold text-danger py-3">
+                                {{ payment.amount|floatformat:0|intcomma }} đ
+                            </td>
+                            <td class="py-3 text-muted small">
+                                {{ payment.order_desc|truncatewords:10|default:"-" }}
+                            </td>
+                            <td class="py-3">
+                                {% if payment.status_class == 'success' %}
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-check-circle me-1"></i> {{ payment.status_text }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-danger">
+                                        <i class="fas fa-times-circle me-1"></i> {{ payment.status_text }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center py-3">
+                                {% if payment.don_hang %}
+                                    <a href="{% url 'web:order_detail' payment.order_id %}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                        <i class="fas fa-eye me-1"></i> Xem đơn
+                                    </a>
+                                {% else %}
+                                    <span class="text-muted small">Đơn đã xóa</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" width="100" class="mb-3 opacity-50">
+                <p class="text-muted">Bạn chưa có lịch sử thanh toán nào.</p>
+                <a href="{% url 'web:home' %}" class="btn btn-primary rounded-pill px-4">
+                    Mua sắm ngay
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock profile_content %}
+
+

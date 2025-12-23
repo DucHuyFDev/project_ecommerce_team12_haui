@@ -83,12 +83,18 @@ VPPShop là dự án website thương mại điện tử chuyên cung cấp các
     VNPAY_HASH_SECRET_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'  # Secret key for create checksum,get from config
     ```
 
-6. **Chạy máy chủ phát triển**:
+6. **Chạy máy chủ FastAPI**:
+   ```bash
+   uvicorn main:app --reload --port 8001 
+   ```
+
+7.  **Chạy máy chủ Django**:
    ```bash
    python manage.py runserver
    ```
-
-7. **Truy cập ứng dụng**:
+   Duy trì cả 2 máy chủ, không được tắt FastAPI đi
+   
+8. **Truy cập ứng dụng**:
    - Trang chủ: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
    - Trang quản trị: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
 
